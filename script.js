@@ -1,8 +1,17 @@
 const initialGridSize = 8;
 const initialColor = "black";
-let initialSize;
+const initialMode = "pencil";
+
+let gridSizeText = document.querySelector("[data-sizeText]");
+let gridBox = document.querySelector(".area-sketch");
+let gridSizeSlider = document.querySelector("#gridSize");
 let currentColor = initialColor;
 
+let initialSize = changeGridSize(gridSizeSlider.value);
+
+gridSizeSlider.addEventListener("mousedown", (e) => {
+  changeGridSize(e.target.value);
+});
 let colorSelector = document
   .querySelector("#color")
   .addEventListener("change", (e) => {
@@ -14,8 +23,9 @@ let clearScreen = document
     let divs = gridBox.querySelectorAll("div");
     divs.forEach((div) => (div.style.background = "aliceblue"));
   });
-let gridBox = document.querySelector(".area-sketch");
-let drawPointer = gridBox.addEventListener("click", (e) => {
+let drawPointer = gridBox.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  console.log(e.type);
   e.target.style.background = currentColor;
 });
 
@@ -24,3 +34,13 @@ let gridToggle = document
   .addEventListener("click", function () {
     gridBox.classList.toggle("grid-outline");
   });
+
+function changeGridSize(gridSize) {
+  gridBox.innerHTML = "";
+  gridSizeText.innerHTML = `${gridSize}x${gridSize}`;
+  gridBox.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+  for (i = 0; i < gridSize * gridSize; i++) {
+    gridBox.innerHTML += `<div></div>`;
+  }
+}
