@@ -6,6 +6,18 @@ let gridSizeText = document.querySelector("[data-sizeText]");
 let gridBox = document.querySelector(".area-sketch");
 let gridSizeSlider = document.querySelector("#gridSize");
 let tools = document.querySelector(".area-tools");
+let pencil = document
+  .querySelector("[data-pencil]")
+  .addEventListener("click", (e) => {
+    switchTools(e);
+  });
+let rainbow = document
+  .querySelector("[data-rainbow]")
+  .addEventListener("click", (e) => {
+    switchTools(e);
+  });
+let eraser = document.querySelector("[data-eraser]");
+
 let currentColor = initialColor;
 
 document.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -72,4 +84,10 @@ function rGb() {
     green,
     blue = Math.floor(Math.random() * 256);
   return `${red},${green},${blue},1`;
+}
+
+function switchTools(e) {
+  if (e.target) {
+    console.log("button clicked");
+  }
 }

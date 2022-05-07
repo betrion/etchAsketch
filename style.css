@@ -11,10 +11,11 @@ body {
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.521);
 }
 .toggled {
-  background: aliceblue;
+  background: rgba(159, 198, 233, 0.801);
 }
 h1 {
   font-size: 52px;
+  text-shadow: 2px 2px rgb(8, 24, 37);
   text-align: center;
 }
 [data-sizeText] {
@@ -27,8 +28,8 @@ h1 {
 .area-title {
   font-family: "Roboto Flex", sans-serif;
 
-  background-color: rgb(129, 119, 119);
-  color: antiquewhite;
+  background-color: rgb(199, 212, 223);
+  color: aliceblue;
   border-bottom: 1px solid rgba(53, 46, 46, 0.548);
 }
 .container {
@@ -72,6 +73,7 @@ button:hover {
 #color:hover {
   zoom: 105%;
 }
+
 #gridSize {
   -webkit-appearance: none;
   box-shadow: 2px 5px 20px rgba(3, 2, 2, 0.658);
@@ -101,7 +103,7 @@ button:hover {
 }
 
 .grid-outline div {
-  outline: 1px dashed lightgrey;
+  outline: 1px dashed rgba(211, 211, 211, 0.5);
 }
 
 .area-sketch div {
