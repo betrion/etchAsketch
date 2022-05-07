@@ -6,17 +6,19 @@ let gridSizeText = document.querySelector("[data-sizeText]");
 let gridBox = document.querySelector(".area-sketch");
 let gridSizeSlider = document.querySelector("#gridSize");
 let tools = document.querySelector(".area-tools");
-let pencil = document
-  .querySelector("[data-pencil]")
-  .addEventListener("click", (e) => {
-    switchTools(e);
-  });
-let rainbow = document
-  .querySelector("[data-rainbow]")
-  .addEventListener("click", (e) => {
-    switchTools(e);
-  });
+let pencil = document.querySelector("[data-pencil]");
 let eraser = document.querySelector("[data-eraser]");
+
+let rainbow = document.querySelector("[data-rainbow]");
+
+tools.addEventListener("click", (e) => {
+  console.log(e.target.type);
+  if (e.target.type === "submit") {
+    e.target.classList.toggle("toggled");
+    e.target.disabled = true;
+    pencil.disabled = false;
+  }
+});
 
 let currentColor = initialColor;
 
@@ -67,7 +69,11 @@ let gridToggle = document
 function colorDiv(e) {
   if (isMouse) {
     console.log(e.type);
-    e.target.style.background = currentColor;
+    if (rainbow.disabled) {
+      e.target.style.background = rGb();
+    } else {
+      e.target.style.background = currentColor;
+    }
   }
 }
 function changeGridSize(gridSize) {
@@ -80,10 +86,11 @@ function changeGridSize(gridSize) {
   }
 }
 function rGb() {
-  let red,
-    green,
-    blue = Math.floor(Math.random() * 256);
-  return `${red},${green},${blue},1`;
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+
+  let blue = Math.floor(Math.random() * 256);
+  return `rgba(${red},${green},${blue},1)`;
 }
 
 function switchTools(e) {
@@ -91,3 +98,5 @@ function switchTools(e) {
     console.log("button clicked");
   }
 }
+
+console.log(rGb());
