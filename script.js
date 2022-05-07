@@ -14,9 +14,7 @@ let rainbow = document.querySelector("[data-rainbow]");
 tools.addEventListener("click", (e) => {
   console.log(e.target.type);
   if (e.target.type === "submit") {
-    e.target.classList.toggle("toggled");
-    e.target.disabled = true;
-    pencil.disabled = false;
+    switchTools(e);
   }
 });
 
@@ -71,6 +69,8 @@ function colorDiv(e) {
     console.log(e.type);
     if (rainbow.disabled) {
       e.target.style.background = rGb();
+    } else if (eraser.disabled) {
+      e.target.style.background = "aliceblue";
     } else {
       e.target.style.background = currentColor;
     }
@@ -94,9 +94,9 @@ function rGb() {
 }
 
 function switchTools(e) {
-  if (e.target) {
-    console.log("button clicked");
-  }
+  e.target.classList.toggle("toggled");
+  e.target.disabled = true;
+  pencil.disabled = false;
 }
 
 console.log(rGb());
