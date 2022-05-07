@@ -33,7 +33,7 @@ let clearScreen = document
 //   e.target.style.background = currentColor;
 // });
 
-let drawPointer = gridBox.addEventListener("mouseover", (e) => {
+let drawPointer = gridBox.addEventListener("mousemove", (e) => {
   gridBox.addEventListener("mousedown", () => (isMouse = true));
 
   gridBox.addEventListener("mouseup", () => (isMouse = false));
