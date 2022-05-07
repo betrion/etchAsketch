@@ -1,10 +1,11 @@
 const initialGridSize = 8;
 const initialColor = "black";
-const initialMode = "pencil";
+const initialTool = "pencil";
 
 let gridSizeText = document.querySelector("[data-sizeText]");
 let gridBox = document.querySelector(".area-sketch");
 let gridSizeSlider = document.querySelector("#gridSize");
+let tools = document.querySelector(".area-tools");
 let currentColor = initialColor;
 
 let initialSize = changeGridSize(gridSizeSlider.value);

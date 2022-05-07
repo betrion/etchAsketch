@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Roboto+Flex:opsz,wght@8..144,600&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -22,11 +22,31 @@ h1 {
 }
 .container {
   display: flex;
-  justify-content: space-between;
   background-color: rgb(129, 119, 119);
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.616);
+}
+.area-tools {
+  user-select: none;
+
+  flex-grow: 2;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  outline: 1px solid green;
+}
+button {
+  padding: 1rem;
+  border: 0px;
+  border-radius: 10%;
+  font-family: "Open Sans";
+  font-size: large;
+  box-shadow: 2px 5px 20px rgba(3, 2, 2, 0.658);
 }
 .area-sketch {
+  flex-shrink: 0;
   cursor: crosshair;
   background-color: aliceblue;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.288);
@@ -49,8 +69,9 @@ h1 {
 @media only screen and (max-width: 600px) {
   .area-tools {
     display: flex;
-    justify-content: space-between;
-    gap: 2px;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1px;
   }
   .container {
     gap: 1rem;
