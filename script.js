@@ -1,6 +1,6 @@
-const initialGridSize = 8;
 const initialColor = "black";
 const initialTool = "pencil";
+let isMouse = false;
 
 let gridSizeText = document.querySelector("[data-sizeText]");
 let gridBox = document.querySelector(".area-sketch");
@@ -8,15 +8,18 @@ let gridSizeSlider = document.querySelector("#gridSize");
 let tools = document.querySelector(".area-tools");
 let currentColor = initialColor;
 
+document.addEventListener("contextmenu", (e) => e.preventDefault());
 let initialSize = changeGridSize(gridSizeSlider.value);
 
-gridSizeSlider.addEventListener("mousedown", (e) => {
+gridSizeSlider.addEventListener("input", (e) => {
   changeGridSize(e.target.value);
 });
+
 let colorSelector = document
   .querySelector("#color")
   .addEventListener("change", (e) => {
     currentColor = e.target.value;
+    document.querySelector("#color").style.background = e.target.value;
   });
 let clearScreen = document
   .querySelector("[data-clear]")
@@ -24,18 +27,37 @@ let clearScreen = document
     let divs = gridBox.querySelectorAll("div");
     divs.forEach((div) => (div.style.background = "aliceblue"));
   });
-let drawPointer = gridBox.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  console.log(e.type);
-  e.target.style.background = currentColor;
-});
+// let drawPointer = gridBox.addEventListener("mousedown", (e) => {
+//   e.preventDefault();
+//   console.log(e.type);
+//   e.target.style.background = currentColor;
+// });
 
+let drawPointer = gridBox.addEventListener("mouseover", (e) => {
+  gridBox.addEventListener("mousedown", () => (isMouse = true));
+
+  gridBox.addEventListener("mouseup", () => (isMouse = false));
+  colorDiv(e);
+  gridBox.addEventListener("mouseleave", () => (isMouse = false));
+});
+// let pointerOver = gridBox.addEventListener("mousedown", (e) => {
+//   if (e.type == "mousedown") {
+//     console.log(e.type);
+//     e.target.style.background = currentColor;
+//   }
+// });
 let gridToggle = document
   .querySelector("[data-toggle]")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (e) {
+    e.target.classList.toggle("toggled");
     gridBox.classList.toggle("grid-outline");
   });
-
+function colorDiv(e) {
+  if (isMouse) {
+    console.log(e.type);
+    e.target.style.background = currentColor;
+  }
+}
 function changeGridSize(gridSize) {
   gridBox.innerHTML = "";
   gridSizeText.innerHTML = `${gridSize}x${gridSize}`;
@@ -44,4 +66,10 @@ function changeGridSize(gridSize) {
   for (i = 0; i < gridSize * gridSize; i++) {
     gridBox.innerHTML += `<div></div>`;
   }
+}
+function rGb() {
+  let red,
+    green,
+    blue = Math.floor(Math.random() * 256);
+  return `${red},${green},${blue},1`;
 }

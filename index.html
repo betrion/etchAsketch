@@ -15,11 +15,11 @@
         <div>
           <input type="color" name="color" id="color" placeholder="color" />
         </div>
-        <div><button data-pencil>pencil</button></div>
-        <div><button data-rainbow>rainbow mode</button></div>
-        <div><button data-eraser>eraser</button></div>
-        <div><button data-clear>clear screen</button></div>
-        <div><button data-toggle>toggle grid</button></div>
+        <div><button data-pencil class="toggled" disabled>Pencil</button></div>
+        <div><button data-rainbow>Rainbow Mode</button></div>
+        <div><button data-eraser>Eraser</button></div>
+        <div><button data-clear>Clear Screen</button></div>
+        <div><button data-toggle class="toggled">Toggle Grid</button></div>
         <div>
           <input
             type="range"
@@ -28,7 +28,7 @@
             placeholder="grid size"
             min="2"
             max="32"
-            value="8"
+            value="16"
             step="2"
           />
           <p data-sizeText></p>
