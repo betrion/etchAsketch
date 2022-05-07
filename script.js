@@ -12,7 +12,6 @@ let eraser = document.querySelector("[data-eraser]");
 let rainbow = document.querySelector("[data-rainbow]");
 
 tools.addEventListener("click", (e) => {
-  console.log(e.target.type);
   if (e.target.type === "submit") {
     switchTools(e);
   }
@@ -94,9 +93,27 @@ function rGb() {
 }
 
 function switchTools(e) {
-  e.target.classList.toggle("toggled");
-  e.target.disabled = true;
-  pencil.disabled = false;
+  console.log(e.target.getAttribute("id"));
+  if (e.target.getAttribute("id") === "pencil") {
+    e.target.classList.add("toggled");
+    e.target.disabled = true;
+    rainbow.disabled = false;
+    rainbow.classList.remove("toggled");
+    eraser.disabled = false;
+    eraser.classList.remove("toggled");
+  } else if (e.target.getAttribute("id") === "rainbow") {
+    e.target.classList.add("toggled");
+    e.target.disabled = true;
+    pencil.disabled = false;
+    pencil.classList.remove("toggled");
+    eraser.disabled = false;
+    eraser.classList.remove("toggled");
+  } else if (e.target.getAttribute("id") === "eraser") {
+    e.target.classList.add("toggled");
+    e.target.disabled = true;
+    pencil.disabled = false;
+    pencil.classList.remove("toggled");
+    rainbow.disabled = false;
+    rainbow.classList.remove("toggled");
+  }
 }
-
-console.log(rGb());
