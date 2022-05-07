@@ -109,6 +109,7 @@ button:hover {
 .area-sketch div {
   user-select: none;
 }
+
 @media only screen and (max-width: 600px) {
   .area-tools {
     display: flex;
@@ -116,9 +117,21 @@ button:hover {
     justify-content: space-around;
     gap: 12px;
   }
+  h1 {
+    font-size: large;
+  }
+  button {
+    font-size: medium;
+    padding: 0.5rem;
+  }
   .container {
     gap: 1rem;
     flex-direction: column;
     align-items: center;
+  }
+  .area-sketch {
+    width: 400px;
+    height: 400px;
+    box-shadow: none;
   }
 }

@@ -17,6 +17,7 @@ tools.addEventListener("click", (e) => {
 });
 
 document.addEventListener("contextmenu", (e) => e.preventDefault());
+
 let initialSize = changeGridSize(gridSizeSlider.value);
 
 gridSizeSlider.addEventListener("input", (e) => {
@@ -44,12 +45,13 @@ let drawPointer = gridBox.addEventListener("mousemove", (e) => {
   gridBox.addEventListener("mouseleave", () => (isMouse = false));
 });
 
-let gridToggle = document
+const gridToggle = document
   .querySelector("[data-toggle]")
   .addEventListener("click", function (e) {
     e.target.classList.toggle("toggled");
     gridBox.classList.toggle("grid-outline");
   });
+
 function colorDiv(e) {
   if (isMouse) {
     console.log(e.type);
@@ -62,6 +64,7 @@ function colorDiv(e) {
     }
   }
 }
+
 function changeGridSize(gridSize) {
   gridBox.innerHTML = "";
   gridSizeText.innerHTML = `${gridSize}x${gridSize}`;
